@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: #07070f;
+  --color-foreground: #e8e8f0;
+  --color-card: #0e0e1a;
+  --color-card-foreground: #e8e8f0;
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1a1a2e;
+  --color-secondary-foreground: #a0a0c0;
+  --color-muted: #141422;
+  --color-muted-foreground: #6b6b8a;
+  --color-accent: #8b5cf6;
+  --color-accent-foreground: #ffffff;
+  --color-border: rgba(99, 102, 241, 0.15);
+  --color-ring: #6366f1;
+  --radius: 0.75rem;
+
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #0e0e1a;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0e1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 99px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+:root {
+  --bg: #07070f;
+  --fg: #e8e8f0;
+  --card-bg: #0e0e1a;
+  --card-bg2: #121222;
+  --input-bg: #0e0e1a;
+  --border-col: rgba(99, 102, 241, 0.15);
+  --gray-text: #9ca3af;
+  --gray-light: #6b7280;
+  --grid-line: rgba(99, 102, 241, 0.04);
+  --nav-bg: rgba(7, 7, 15, 0.9);
+  --orb1: rgba(99, 102, 241, 0.10);
+  --orb2: rgba(139, 92, 246, 0.10);
+}
+
+:root.light {
+  --bg: #f5f5ff;
+  --fg: #12121f;
+  --card-bg: #ffffff;
+  --card-bg2: #f0f0ff;
+  --input-bg: #ffffff;
+  --border-col: rgba(99, 102, 241, 0.2);
+  --gray-text: #4b4b6a;
+  --gray-light: #6b6b8a;
+  --grid-line: rgba(99, 102, 241, 0.06);
+  --nav-bg: rgba(245, 245, 255, 0.92);
+  --orb1: rgba(99, 102, 241, 0.08);
+  --orb2: rgba(139, 92, 246, 0.08);
+}
+
+.font-display {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.glow-blue {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+.glow-purple {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.15);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes cat-head-move {
+  0%, 100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  25% {
+    transform: rotate(2deg) translateY(-1px);
+  }
+  50% {
+    transform: rotate(-1deg) translateY(-2px);
+  }
+  75% {
+    transform: rotate(3deg) translateY(-1px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5); }
+}
+
+.cat-head {
+  transform-origin: center center;
+  animation: cat-head-move 2.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.c-card { background-color: var(--card-bg); transition: background-color 0.4s ease; }
+.c-card:hover, .c-card2 { background-color: var(--card-bg2); }
+.c-input { background-color: var(--input-bg); color: var(--fg); border-color: var(--border-col); transition: background-color 0.4s ease, color 0.4s ease; }
+.c-text { color: var(--fg); }
+.c-subtext { color: var(--gray-text); }
+.c-dim { color: var(--gray-light); }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Light mode overrides */
+.light .text-white { color: #12121f !important; }
+.light .text-gray-400 { color: #4b4b6a !important; }
+.light .text-gray-500 { color: #6b6b8a !important; }
+.light .text-gray-600 { color: #8888aa !important; }
+
+.light [class*="bg-[#0e0e1a]"],
+.light [class*="bg-\[#0e0e1a\]"] {
+  background-color: #ffffff !important;
+}
+.light [class*="bg-[#121222]"],
+.light [class*="hover\:bg-\[#121222\]"]:hover {
+  background-color: #f0f0ff !important;
+}
+
+/* Alternate section bg in light mode */
+.light .section-alt {
+  background-color: rgba(99, 102, 241, 0.04) !important;
+}
+
+.light .hero-text-main { color: #12121f; }
+.light .input-field {
+  background-color: #ffffff;
+  border-color: rgba(99, 102, 241, 0.25);
+  color: #12121f;
+}
