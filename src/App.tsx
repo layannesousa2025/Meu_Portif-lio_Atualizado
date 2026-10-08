@@ -75,11 +75,11 @@ const TRANSLATIONS = {
     skillsSub: 'Tecnologias com as quais trabalho e estou continuamente evoluindo.',
     projectsTag: '// projetos',
     projectsTitle: 'Projetos',
-    projectsSub: 'Trabalhos desenvolvidos durante minha jornada de aprendizado.',
+    projectsSub: 'Trabalhos desenvolvidos durante minha jornada de aprendizado na Instituição Senac-DF, no curso de Desenvolvimento de Software.',
     projectDemo: 'Demonstração',
     projects: [
-      { title: 'Controle de Atividades', desc: 'Aplicação web para gerenciamento de tarefas voltada a desenvolvedores, com autenticação, categorias e filtros dinâmicos.' },
-      { title: 'Portfólio Pessoal', desc: 'Primeira versão do portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro, com design responsivo.' },
+      { title: 'Curso Desenvolvimento Web – Senac', desc: 'Projeto desenvolvido durante o curso de Desenvolvimento Web do Senac-DF, colocando em prática conceitos de criação de aplicações web eficientes e funcionais.' },
+      { title: 'Curso Técnico em Desenvolvimento de Sistemas – Senac', desc: 'Primeira versão do portfólio pessoal desenvolvido com HTML, CSS e JavaScript puro, com design responsivo.' },
     ],
     educationTag: '// formacao',
     educationTitle: 'Formação',
@@ -94,6 +94,11 @@ const TRANSLATIONS = {
     contactTitle: 'Entre em Contato',
     contactSub: 'Vamos conversar sobre projetos, oportunidades ou colaborações.',
     contactDesc: 'Estou sempre aberta a novas conexões, oportunidades de aprendizado e colaborações criativas. Me encontre nas redes abaixo ou envie uma mensagem direto pelo formulário.',
+    contactHeading: 'Vamos conversar?',
+    contactIntro: 'Estou aberta a oportunidades de estágio e a projetos em suporte, desenvolvimento e dados.',
+    contactTerminalLines: ['abrindo chamado...', 'técnica disponível', 'aguardando sua mensagem'],
+    copyEmail: 'Copiar e-mail',
+    copiedEmail: 'Copiado!',
     formName: 'Layanne Sousa',
     formEmail: 'Seu e-mail',
     formSubject: 'Assunto',
@@ -138,8 +143,8 @@ const TRANSLATIONS = {
     projectsSub: 'Work developed during my learning journey.',
     projectDemo: 'Demo',
     projects: [
-      { title: 'Task Management', desc: 'Web application for managing tasks, designed for developers, with authentication, categories and dynamic filters.' },
-      { title: 'Personal Portfolio', desc: 'First version of the personal portfolio built with HTML, CSS and plain JavaScript, with responsive design.' },
+      { title: 'Senac Web Development Course', desc: 'Project developed during Senac-DF’s Web Development course, applying concepts for building efficient and functional web applications.' },
+      { title: 'Senac Systems Development Technical Course', desc: 'First version of the personal portfolio built with HTML, CSS and plain JavaScript, with responsive design.' },
     ],
     educationTag: '// education',
     educationTitle: 'Education',
@@ -154,6 +159,11 @@ const TRANSLATIONS = {
     contactTitle: 'Get in Touch',
     contactSub: "Let's talk about projects, opportunities or collaborations.",
     contactDesc: "I'm always open to new connections, learning opportunities and creative collaborations. Find me on the networks below or send a message directly through the form.",
+    contactHeading: "Let's talk?",
+    contactIntro: "I'm open to internship opportunities and projects in support, software development, and data.",
+    contactTerminalLines: ['opening ticket...', 'technician available', 'waiting for your message'],
+    copyEmail: 'Copy email',
+    copiedEmail: 'Copied!',
     formName: 'Your name',
     formEmail: 'Your e-mail',
     formSubject: 'Subject',
@@ -195,6 +205,10 @@ const PROJECT_TECHS = [
 ]
 
 const PROJECT_LIVE = [true, true]
+const PROJECT_DEMO_LINKS = [
+  'https://sintex.infinityfree.me',
+  'https://championssports.infinityfree.me',
+]
 
 // ─── Hooks ────────────────────────────────────────────────────────────────────
 
@@ -585,8 +599,8 @@ function Projects({ t }: { t: typeof TRANSLATIONS.pt }) {
                   <a href="https://github.com/layannesousa2025/Projeto-PI" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" aria-label={`GitHub – ${p.title}`}>
                     <GithubIcon size={15} /> GitHub
                   </a>
-                  {PROJECT_LIVE[i] && (
-                    <a href="https://lnkd.in/dzXwk5xi" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors" aria-label={`Demo – ${p.title}`}>
+                  {PROJECT_LIVE[i] && PROJECT_DEMO_LINKS[i] && (
+                    <a href={PROJECT_DEMO_LINKS[i]} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-indigo-400 hover:text-indigo-300 transition-colors" aria-label={`Demo – ${p.title}`}>
                       <ExternalLink size={15} /> Demo
                     </a>
                   )}
@@ -620,12 +634,11 @@ function Contact({ t }: { t: typeof TRANSLATIONS.pt }) {
         <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-18 items-center">
           <div className="max-w-xl">
             <h2 className="text-5xl md:text-7xl lg:text-[7rem] leading-[0.88] font-black text-white tracking-[-0.06em]">
-              Vamos<br />
-              conversar?
+              {t.contactHeading}
             </h2>
 
             <p className="mt-8 text-xl md:text-2xl leading-relaxed text-gray-300">
-              Estou aberta a oportunidades de estágio e a projetos em suporte, desenvolvimento e dados.
+              {t.contactIntro}
             </p>
           </div>
 
@@ -639,17 +652,17 @@ function Contact({ t }: { t: typeof TRANSLATIONS.pt }) {
             <div className="space-y-4 font-mono text-[15px] md:text-[17px] text-white">
               <div className="flex items-center gap-2 text-indigo-400">
                 <span>&gt;</span>
-                <span>abrindo chamado...</span>
+                <span>{t.contactTerminalLines[0]}</span>
                 <span className="text-green-400">ok</span>
               </div>
               <div className="flex items-center gap-2 text-indigo-400">
                 <span>&gt;</span>
-                <span>técnica disponível</span>
+                <span>{t.contactTerminalLines[1]}</span>
                 <span className="text-green-400">ok</span>
               </div>
               <div className="flex items-center gap-2 text-indigo-400">
                 <span>&gt;</span>
-                <span>aguardando sua mensagem</span>
+                <span>{t.contactTerminalLines[2]}</span>
                 <span className="inline-block w-2.5 h-5 bg-indigo-500 animate-pulse" />
               </div>
             </div>
@@ -661,7 +674,7 @@ function Contact({ t }: { t: typeof TRANSLATIONS.pt }) {
                 onClick={handleCopy}
                 className="ml-auto rounded-lg bg-indigo-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(99,102,241,0.45)] transition hover:bg-indigo-400"
               >
-                {copied ? 'Copiado!' : 'Copiar e-mail'}
+                {copied ? t.copiedEmail : t.copyEmail}
               </button>
             </div>
 
