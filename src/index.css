@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 @import 'tailwindcss';
 
-@theme inline {
+@theme {
   --color-background: #07070f;
   --color-foreground: #e8e8f0;
   --color-card: #0e0e1a;

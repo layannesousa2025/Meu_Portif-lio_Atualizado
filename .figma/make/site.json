@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a software developer's professional portfolio with responsive design, interactive project displays, and seamless contact options for recruiters.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
