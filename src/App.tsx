@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import {
-  Mail, MessageCircle, ExternalLink, Menu, X,
-  Code2, Database, GitBranch, Globe, ChevronDown,
-  Calendar, MapPin, Send, Terminal, Layers, Cpu, Sun, Moon
+  Mail, ExternalLink, Menu, X,
+  Globe, ChevronDown, Terminal, Layers, Sun, Moon
 } from 'lucide-react'
 import profileImg from './img/img.png'
 import catinhoImg from './img/Img-3D.png'
