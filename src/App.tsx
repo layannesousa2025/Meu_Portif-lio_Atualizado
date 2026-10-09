@@ -4,9 +4,9 @@ import {
   Globe, ChevronDown, Terminal, Layers, Sun, Moon
 } from 'lucide-react'
 import profileImg from './img/img.png'
-import catinhoImg from './img/Img-3D.png'
+import catinhoImg from './img/img-3d.png'
 import img01 from './img/img-01.png'
-import img02 from './img/Img-02.png'
+import img02 from './img/img-02.png'
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
