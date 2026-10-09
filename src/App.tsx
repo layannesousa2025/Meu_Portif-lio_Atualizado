@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, type ReactNode } from 'react'
 import {
   Mail, ExternalLink, Menu, X,
   Globe, ChevronDown, Terminal, Layers, Sun, Moon
@@ -172,7 +172,9 @@ const TRANSLATIONS = {
     footer: '© 2026 lay · Made with ❤️ and lots of coffee',
     toggleTheme: 'Toggle theme',
   },
-}
+} as const
+
+type TranslationSet = (typeof TRANSLATIONS)[Lang]
 
 // ─── Static data ──────────────────────────────────────────────────────────────
 
@@ -242,7 +244,7 @@ function useTheme() {
 
 // ─── UI primitives ────────────────────────────────────────────────────────────
 
-function Section({ id, children, alt = false }: { id: string; children: React.ReactNode; alt?: boolean }) {
+function Section({ id, children, alt = false }: { id: string; children: ReactNode; alt?: boolean }) {
   return (
     <section
       id={id}
@@ -303,7 +305,7 @@ function Navbar({
   toggleTheme: () => void
   lang: Lang
   setLang: (l: Lang) => void
-  t: typeof TRANSLATIONS.pt
+  t: TranslationSet
 }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -411,7 +413,7 @@ function CatImage() {
   )
 }
 
-function Hero({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Hero({ t }: { t: TranslationSet }) {
   return (
     <section
       id="hero"
@@ -483,7 +485,7 @@ function Hero({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function About({ t }: { t: typeof TRANSLATIONS.pt }) {
+function About({ t }: { t: TranslationSet }) {
   const { ref, visible } = useIntersectionObserver()
   return (
     <Section id="sobre" alt>
@@ -509,7 +511,7 @@ function About({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function Timeline({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Timeline({ t }: { t: TranslationSet }) {
   const { ref, visible } = useIntersectionObserver()
   return (
     <Section id="trajetoria">
@@ -540,7 +542,7 @@ function Timeline({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function Skills({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Skills({ t }: { t: TranslationSet }) {
   const { ref, visible } = useIntersectionObserver()
   return (
     <Section id="habilidades" alt>
@@ -574,7 +576,7 @@ function Skills({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function Projects({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Projects({ t }: { t: TranslationSet }) {
   const { ref, visible } = useIntersectionObserver()
   return (
     <Section id="projetos">
@@ -613,7 +615,7 @@ function Projects({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function Contact({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Contact({ t }: { t: TranslationSet }) {
   const { ref, visible } = useIntersectionObserver()
   const [copied, setCopied] = useState(false)
 
@@ -692,7 +694,7 @@ function Contact({ t }: { t: typeof TRANSLATIONS.pt }) {
   )
 }
 
-function Footer({ t }: { t: typeof TRANSLATIONS.pt }) {
+function Footer({ t }: { t: TranslationSet }) {
   return (
     <footer className="border-t border-indigo-500/10 py-10 px-6">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
