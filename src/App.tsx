@@ -212,6 +212,11 @@ const PROJECT_DEMO_LINKS = [
   'https://championssports.infinityfree.me',
 ]
 
+const PROJECT_GITHUB_LINKS = [
+  'https://github.com/layannesousa2025/Sintex',
+  'https://github.com/layannesousa2025/Projeto-PI',
+]
+
 // ─── Hooks ────────────────────────────────────────────────────────────────────
 
 function useIntersectionObserver(threshold = 0.15) {
@@ -545,7 +550,7 @@ function Timeline({ t }: { t: TranslationSet }) {
                     <Icon size={18} className="text-indigo-400" />
                     <span className="absolute -top-7 left-1/2 -translate-x-1/2 font-display text-[10px] text-indigo-500 whitespace-nowrap">{TIMELINE_YEARS[i]}</span>
                   </div>
-                  <div className="flex-1 c-card gradient-border rounded-xl p-5 transition-colors mt-2">
+                  <div className="flex-1 c-card border border-white/10 rounded-xl p-5 transition-colors mt-2">
                     <h3 className="text-white font-semibold mb-2">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
                   </div>
@@ -569,7 +574,7 @@ function Skills({ t }: { t: TranslationSet }) {
           {SKILLS.map((skill, i) => (
             <div
               key={skill.name}
-              className="skill-card gradient-border c-card rounded-xl p-5 text-center cursor-default transition-all duration-300"
+              className="skill-card c-card border border-white/10 rounded-xl p-5 text-center cursor-default transition-all duration-300"
               style={{ animationDelay: `${i * 60}ms` }}
             >
               <div className="text-2xl mb-3 font-display font-bold" style={{ color: skill.color }}>{skill.icon}</div>
@@ -601,7 +606,7 @@ function Projects({ t }: { t: TranslationSet }) {
         <SectionHeader tag={t.projectsTag} title={t.projectsTitle} subtitle={t.projectsSub} />
         <div className="grid md:grid-cols-2 gap-6">
           {t.projects.map((p, i) => (
-            <div key={i} className="project-card gradient-border c-card rounded-2xl overflow-hidden group cursor-default transition-all duration-300">
+            <div key={i} className="project-card c-card border border-white/10 rounded-2xl overflow-hidden group cursor-default transition-all duration-300">
               <div className="aspect-video overflow-hidden c-card2">
                 <img src={PROJECT_IMAGES[i]} alt={p.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500" />
               </div>
@@ -614,7 +619,7 @@ function Projects({ t }: { t: TranslationSet }) {
                   ))}
                 </div>
                 <div className="flex gap-3 pt-2">
-                  <a href="https://github.com/layannesousa2025/Projeto-PI" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" aria-label={`GitHub – ${p.title}`}>
+                  <a href={PROJECT_GITHUB_LINKS[i]} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors" aria-label={`GitHub – ${p.title}`}>
                     <GithubIcon size={15} /> GitHub
                   </a>
                   {PROJECT_LIVE[i] && PROJECT_DEMO_LINKS[i] && (
