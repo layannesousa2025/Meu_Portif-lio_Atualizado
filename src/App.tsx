@@ -7,6 +7,7 @@ import profileImg from './img/img.png'
 import catinhoImg from './img/img-3d.png'
 import img01 from './img/img-01.png'
 import img02 from './img/img-02.png'
+import { InteractiveCatBot } from './InteractiveCatBot'
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
@@ -414,6 +415,15 @@ function CatImage() {
 }
 
 function Hero({ t }: { t: TranslationSet }) {
+  const [bubbleText, setBubbleText] = useState('Já tentou desligar e ligar de novo? 😄')
+  const [bubbleBounced, setBubbleBounced] = useState(false)
+
+  const handleInteract = (quote: string) => {
+    setBubbleText(quote)
+    setBubbleBounced(true)
+    setTimeout(() => setBubbleBounced(false), 300)
+  }
+
   return (
     <section
       id="hero"
@@ -466,17 +476,24 @@ function Hero({ t }: { t: TranslationSet }) {
 
         <div className="relative animate-float w-full max-w-[400px] mx-auto lg:mx-0">
           <div className="stage" id="stage" style={{ position: 'relative', width: '100%', aspectRatio: '628/500' }}>
-            <div className="bubble absolute -top-8 left-0 right-0 text-center bg-indigo-900/50 text-indigo-100 p-3 rounded-2xl text-sm backdrop-blur-sm border border-indigo-500/30 shadow-lg z-10" id="bubble" aria-live="polite">
-              Já tentou desligar e ligar de novo? 😄
+            <div
+              className={`bubble absolute -top-8 left-0 right-0 text-center bg-indigo-900/60 text-indigo-100 px-4 py-2.5 rounded-2xl text-sm font-medium backdrop-blur-md border border-indigo-500/30 shadow-lg shadow-indigo-950/40 z-10 transition-all duration-300 ${
+                bubbleBounced ? 'scale-105 border-indigo-400 bg-indigo-800/80' : 'scale-100'
+              }`}
+              id="bubble"
+              aria-live="polite"
+            >
+              {bubbleText}
             </div>
-            <CatImage />
+            <InteractiveCatBot onInteract={handleInteract} />
             <div className="bot-fallback absolute inset-0 flex items-center justify-center text-6xl opacity-0 -z-10" aria-hidden="true">🐱</div>
-            <div className="stage-hint absolute -bottom-8 left-0 right-0 text-center text-xs text-indigo-400/70 font-display tracking-widest uppercase" data-i18n="hero.hint">
-              gatinho do portfólio
+            <div className="stage-hint absolute -bottom-8 left-0 right-0 text-center text-xs text-indigo-400/80 font-display tracking-widest uppercase" data-i18n="hero.hint">
+              ✨ Toque ou passe o mouse no gatinho ✨
             </div>
           </div>
         </div>
       </div>
+
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-gray-600">
         <ChevronDown size={20} />
