@@ -64,10 +64,10 @@ const TRANSLATIONS = {
     timelineTitle: 'Minha Trajetória',
     timelineSub: 'Uma linha do tempo da minha evolução na tecnologia.',
     timeline: [
-       { title: 'Ensino Superior', desc: 'Formação em Análise e Desenvolvimento de Sistemas, com foco em programação e desenvolvimento de software (2024-2026).' },
+      { title: 'Ensino Superior', desc: 'Formação em Análise e Desenvolvimento de Sistemas, com foco em programação e desenvolvimento de software (2024-2026).' },
 
-      { title: 'Ensino técnico Senac-DF', desc: 'Formação técnica em desenvolvimento de software, com foco em suporte técnico e programação (2024-2025).' },
-      { title: 'Jovem Aprendiz-G4F', desc: 'Atuação em ambiente de trabalho, desenvolvendo habilidades técnicas e profissionais. (2026)' },
+      { title: 'Ensino Técnico Senac-DF', desc: 'Formação técnica em desenvolvimento de software, com foco em suporte técnico e programação (2024-2025).' },
+      { title: 'Jovem Aprendiz-G4F (em parceria com Senac-DF)', desc: 'Atuação em ambiente de trabalho, desenvolvendo habilidades técnicas e profissionais. (2026-2027).' },
 
     ],
     skillsTag: '// habilidades',
@@ -482,9 +482,8 @@ function Hero({ t }: { t: TranslationSet }) {
         <div className="relative animate-float w-full max-w-[400px] mx-auto lg:mx-0">
           <div className="stage" id="stage" style={{ position: 'relative', width: '100%', aspectRatio: '628/500' }}>
             <div
-              className={`bubble absolute -top-8 left-0 right-0 text-center bg-indigo-900/60 text-indigo-100 px-4 py-2.5 rounded-2xl text-sm font-medium backdrop-blur-md border border-indigo-500/30 shadow-lg shadow-indigo-950/40 z-10 transition-all duration-300 ${
-                bubbleBounced ? 'scale-105 border-indigo-400 bg-indigo-800/80' : 'scale-100'
-              }`}
+              className={`bubble absolute -top-8 left-0 right-0 text-center bg-indigo-900/60 text-indigo-100 px-4 py-2.5 rounded-2xl text-sm font-medium backdrop-blur-md border border-indigo-500/30 shadow-lg shadow-indigo-950/40 z-10 transition-all duration-300 ${bubbleBounced ? 'scale-105 border-indigo-400 bg-indigo-800/80' : 'scale-100'
+                }`}
               id="bubble"
               aria-live="polite"
             >
@@ -654,25 +653,25 @@ function Contact({ t }: { t: TranslationSet }) {
   return (
     <Section id="contato">
       <div ref={ref} className={`max-w-6xl mx-auto transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-18 items-center">
-          <div className="max-w-xl">
-            <h2 className="text-5xl md:text-7xl lg:text-[7rem] leading-[0.88] font-black text-white tracking-[-0.06em]">
+        <div className="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-18 items-center">
+          <div className="w-full">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7rem] leading-[0.88] font-black text-white tracking-[-0.04em] break-words">
               {t.contactHeading}
             </h2>
 
-            <p className="mt-8 text-xl md:text-2xl leading-relaxed text-gray-300">
+            <p className="mt-6 text-base sm:text-xl md:text-2xl leading-relaxed text-gray-300">
               {t.contactIntro}
             </p>
           </div>
 
-          <div className="rounded-[28px] border border-indigo-500/70 bg-[#120d1b]/90 p-5 shadow-[0_0_0_1px_rgba(99,102,241,0.2),0_10px_40px_rgba(139,92,246,0.22)]">
+          <div className="rounded-[28px] border border-indigo-500/70 bg-[#120d1b]/90 p-4 sm:p-5 shadow-[0_0_0_1px_rgba(99,102,241,0.2),0_10px_40px_rgba(139,92,246,0.22)]">
             <div className="flex items-center gap-2 mb-5 pl-1">
               <span className="w-3 h-3 rounded-full bg-[#ff5f7a]" />
               <span className="w-3 h-3 rounded-full bg-[#ffc857]" />
               <span className="w-3 h-3 rounded-full bg-[#56f0a1]" />
             </div>
 
-            <div className="space-y-4 font-mono text-[15px] md:text-[17px] text-white">
+            <div className="space-y-4 font-mono text-[13px] sm:text-[15px] md:text-[17px] text-white">
               <div className="flex items-center gap-2 text-indigo-400">
                 <span>&gt;</span>
                 <span>{t.contactTerminalLines[0]}</span>
@@ -690,18 +689,20 @@ function Contact({ t }: { t: TranslationSet }) {
               </div>
             </div>
 
-            <div className="mt-8 flex items-center gap-3 rounded-xl border border-indigo-500/60 bg-[#1c1530] px-4 py-3">
-              <span className="font-mono text-lg md:text-xl text-white">layannesousa792@gmail.com</span>
+            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 rounded-xl border border-indigo-500/60 bg-[#1c1530] px-4 py-3">
+              <span className="font-mono text-sm sm:text-base md:text-lg text-white break-all">
+                layannesousa792@gmail.com
+              </span>
               <button
                 type="button"
                 onClick={handleCopy}
-                className="ml-auto rounded-lg bg-indigo-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(99,102,241,0.45)] transition hover:bg-indigo-400"
+                className="sm:ml-auto rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(99,102,241,0.45)] transition hover:bg-indigo-400 whitespace-nowrap"
               >
                 {copied ? t.copiedEmail : t.copyEmail}
               </button>
             </div>
 
-            <div className="mt-7 flex items-center gap-6 text-indigo-400 font-mono text-lg md:text-xl">
+            <div className="mt-6 flex items-center gap-6 text-indigo-400 font-mono text-base sm:text-lg md:text-xl">
               <a href="https://www.linkedin.com/in/layanne-sousa-ab64bb336" target="_blank" rel="noreferrer" className="hover:text-indigo-300 transition-colors">
                 LinkedIn
               </a>
@@ -718,17 +719,17 @@ function Contact({ t }: { t: TranslationSet }) {
 
 function Footer({ t }: { t: TranslationSet }) {
   return (
-    <footer className="border-t border-indigo-500/10 py-10 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="font-display text-xs text-gray-600">{t.footer}</span>
-        <div className="flex gap-4">
+    <footer className="border-t border-indigo-500/10 py-8 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+        <span className="font-display text-xs text-gray-600 text-center sm:text-left">{t.footer}</span>
+        <div className="flex gap-5">
           {[
-            { icon: GithubIcon, href: '#', label: 'GitHub' },
-            { icon: LinkedinIcon, href: '#', label: 'LinkedIn' },
-            { icon: Mail, href: '#', label: 'Email' },
+            { icon: GithubIcon, href: 'https://github.com/layannesousa2025', label: 'GitHub' },
+            { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/layanne-sousa-ab64bb336', label: 'LinkedIn' },
+            { icon: Mail, href: 'mailto:layannesousa792@gmail.com', label: 'Email' },
           ].map(({ icon: Icon, href, label }) => (
-            <a key={label} href={href} aria-label={label} className="text-gray-600 hover:text-indigo-400 transition-colors">
-              <Icon size={16} />
+            <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="text-gray-600 hover:text-indigo-400 transition-colors">
+              <Icon size={18} />
             </a>
           ))}
         </div>
